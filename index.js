@@ -1,5 +1,6 @@
 console.log("hello world")
 const message = document.querySelector('#message')
+var delayInMilliseconds = 3000;
 
 function addMovie(event) {
     event.preventDefault()
@@ -24,7 +25,6 @@ function addMovie(event) {
 function deleteMovie(event) {
     event.target.parentNode.remove()
     message.textContent = 'Movie Deleted!!!'
-    var delayInMilliseconds = 3000;
     setTimeout(function() {
         message.textContent = ''
     }, delayInMilliseconds)
@@ -32,7 +32,6 @@ function deleteMovie(event) {
 
 function crossOffMovie(event) {
     event.target.classList.toggle('checked')
-    var delayInMilliseconds = 3000;
 
     if (event.target.classList.contains('checked') === true) {
         message.textContent = 'Achevement Unlocked!'

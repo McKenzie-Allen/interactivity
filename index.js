@@ -9,6 +9,7 @@ function addMovie(event) {
 
     const movieTitle = document.createElement("span")
     movieTitle.textContent = inputField.value
+    movieTitle.addEventListener('click', crossOffMovie);
     movie.appendChild(movieTitle)
     document.querySelector('ul').appendChild(movie)
 
@@ -22,8 +23,25 @@ function addMovie(event) {
 
 function deleteMovie(event) {
     event.target.parentNode.remove()
+    message.textContent = 'Movie Deleted!!!'
+    var delayInMilliseconds = 3000;
+    setTimeout(function() {
+        message.textContent = ''
+    }, delayInMilliseconds)
 }
 
-function crossOffMovie()
+function crossOffMovie(event) {
+    event.target.classList.toggle('checked')
+    var delayInMilliseconds = 3000;
+
+    if (event.target.classList.contains('checked') === true) {
+        message.textContent = 'Achevement Unlocked!'
+    } else {
+        message.textContent = 'Movie added back!'
+    }
+    setTimeout(function() {
+        message.textContent = ''
+    }, delayInMilliseconds)
+}
 
 document.querySelector('form').addEventListener('submit', addMovie)
